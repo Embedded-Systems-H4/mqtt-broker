@@ -7,7 +7,7 @@ COPY ./entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
 
 # Expose MQTT and MQTT over TLS ports
-EXPOSE ${SECURE_PORT}
+EXPOSE ${PORT}
 
 # Set the entrypoint to the custom script
 ENTRYPOINT ["/entrypoint.sh"]
