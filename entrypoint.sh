@@ -20,27 +20,18 @@ touch "$MOSQUITTO_CONFIG_DIR/passwd"
 mosquitto_passwd -b "$MOSQUITTO_CONFIG_DIR/passwd" admin DataIt2024
 mosquitto_passwd -b "$MOSQUITTO_CONFIG_DIR/passwd" daniel DataIt2024
 mosquitto_passwd -b "$MOSQUITTO_CONFIG_DIR/passwd" julian DataIt2024
-mosquitto_passwd -b "$MOSQUITTO_CONFIG_DIR/passwd" vlados DataIt2024
-
-# Set the number of dynamic users you want
-NUM_DEVICES=3
-
-# Loop to create usernames and set passwords
-for i in $(seq 1 $NUM_DEVICES); do
-    USERNAME="device-$i"
-    PASSWORD="DataIt2024-$i"
-    mosquitto_passwd -b "$MOSQUITTO_CONFIG_DIR/passwd" "$USERNAME" "$PASSWORD"
-done
+mosquitto_passwd -b "$MOSQUITTO_CONFIG_DIR/passwd" vados DataIt2024
+mosquitto_passwd -b "$MOSQUITTO_CONFIG_DIR/passwd" device DataIt2024
 
 # Create a file to define ACL rules
 echo "
 pattern read main
 
 user admin
-topic readwrite #
+topic #
 
-user device-#
-topic readwrite devices/#
+user device
+topic devices/#
 
 user daniel
 topic read #
@@ -48,7 +39,7 @@ topic read #
 user julian
 topic read #
 
-user vlados
+user vados
 topic read #
 " > "$MOSQUITTO_CONFIG_DIR/acl.conf"
 
