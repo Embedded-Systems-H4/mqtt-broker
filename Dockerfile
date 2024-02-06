@@ -1,13 +1,13 @@
 FROM eclipse-mosquitto:latest
 
-# Copy the custom entrypoint script into the container
-COPY ./entrypoint.sh /entrypoint.sh
-
-# Set execute permissions on the entrypoint script
-RUN chmod +x /entrypoint.sh
-
 # Expose MQTT and MQTT over TLS ports
 EXPOSE ${PORT}
 
-# Set the entrypoint to the custom script
-ENTRYPOINT ["/entrypoint.sh"]
+# Copy a script to the container
+COPY ./entrypoint.sh /entrypoint.sh
+
+# Make the script executable
+RUN chmod +x /entrypoint.sh
+
+# Set the script as the entry point
+ENTRYPOINT ["./entrypoint.sh"]
