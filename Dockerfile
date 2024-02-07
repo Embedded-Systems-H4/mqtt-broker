@@ -1,7 +1,7 @@
 FROM eclipse-mosquitto:latest
 
 # Expose MQTT and MQTT over TLS ports
-EXPOSE ${PORT}
+EXPOSE ${MQTT_PORT}
 
 # Copy a script to the container
 COPY ./entrypoint.sh /entrypoint.sh

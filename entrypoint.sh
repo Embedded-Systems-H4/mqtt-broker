@@ -10,7 +10,7 @@ MOSQUITTO_GROUP="mosquitto"
 echo "
 acl_file $MOSQUITTO_CONFIG_DIR/acl.conf
 per_listener_settings false
-listener $PORT 0.0.0.0
+listener $MQTT_PORT 0.0.0.0
 allow_anonymous false
 password_file $MOSQUITTO_CONFIG_DIR/passwd
 " > "$MOSQUITTO_CONFIG_DIR/mosquitto.conf"
