@@ -1,3 +1,13 @@
+# local env files
+.env*.local
 .env
-node_modules
+
+# Ignore all Docker files
+docker-compose*
+
+# Ignore database files
+database
+
 mosquitto
+
+node_modules
